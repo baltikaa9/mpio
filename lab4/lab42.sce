@@ -135,7 +135,7 @@ function main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, tmax, filename
 
     // Сохранение графика
     xs2png(gcf(), 'img/' + filename);
-    disp('График сохранен в файл ' + filename);
+    disp('График сохранен в файл ' + 'img/' + filename);
 endfunction
 
 disp(' ')

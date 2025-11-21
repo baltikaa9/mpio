@@ -83,4 +83,4 @@ xgrid;
 
 // Сохранение графика
 xs2png(gcf(), 'img/particle_motion.png');
-disp('График движения частицы сохранен в particle_motion.png');
+disp('График движения частицы сохранен в img/particle_motion.png');
