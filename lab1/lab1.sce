@@ -80,3 +80,7 @@ plot(YEB(1,:), YEB(2,:), 'black-');
 title('Электромагнитное поле');
 xlabel('x'); ylabel('y');
 xgrid;
+
+// Сохранение графика
+xs2png(gcf(), 'img/particle_motion.png');
+disp('График движения частицы сохранен в particle_motion.png');

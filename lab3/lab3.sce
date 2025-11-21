@@ -65,6 +65,8 @@ for i = 1:length(gammas)
     legend(labels);
     xgrid;
 end
+xs2png(gcf(), 'img/img/linear_oscillator.png');
+disp('График линейного осциллятора сохранен в linear_oscillator.png');
 
 // Нелинейный осциллятор
 
@@ -87,6 +89,8 @@ for i = 1:length(gammas)
     legend(labels);
     xgrid;
 end
+xs2png(gcf(), 'img/img/nonlinear_oscillator.png');
+disp('График нелинейного осциллятора сохранен в nonlinear_oscillator.png');
 
 // Брюсселятор
 
@@ -110,6 +114,8 @@ for i = 1:length(gammas)
     legend(labels);
     xgrid;
 end
+xs2png(gcf(), 'img/img/brusselator.png');
+disp('График брюсселятора сохранен в brusselator.png');
 
 // Лотка-Вольтерра
 
@@ -140,3 +146,5 @@ for i = 1:length(Bs)
     legend(labels);
     xgrid;
 end
+xs2png(gcf(), 'img/img/lotka_volterra.png');
+disp('График Лотка-Вольтерра сохранен в lotka_volterra.png');

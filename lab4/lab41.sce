@@ -14,7 +14,7 @@ function dYdt = RHP(t, Y)
     dYdt = [dxdt; dydt; dvxdt; dvydt];
 endfunction
 
-function main(x0, y0, vx0, vy0, tmax)
+function main(x0, y0, vx0, vy0, tmax, filename)
     disp('Начальные условия:')
     disp('x0 = ' + string(x0))
     disp('y0 = ' + string(y0))
@@ -153,6 +153,10 @@ function main(x0, y0, vx0, vy0, tmax)
     title('Момент импульса от времени');
     xlabel('Время (годы)'); ylabel('Момент импульса L');
     xgrid;
+
+    // Сохранение графика
+    xs2png(gcf(), 'img/' + filename);
+    disp('График сохранен в файл img/' + filename);
 endfunction
 
 // Круговая орбита (e = 0)
@@ -161,7 +165,7 @@ y0 = 0;
 vx0 = 0;
 vy0 = sqrt(K / x0);  // Первая космическая скорость
 
-main(x0, y0, vx0, vy0, 30);
+main(x0, y0, vx0, vy0, 30, 'orbit_circular.png');
 
 // Эллиптическая орбита
 
@@ -171,7 +175,7 @@ y0 = 0;
 vx0 = 0;
 vy0 = 1.2 * sqrt(K / x0);  // На 20% больше круговой
 
-main(x0, y0, vx0, vy0, 30)
+main(x0, y0, vx0, vy0, 30, 'orbit_elliptic_weak.png')
 
 // Вариант 2: Умеренный эллипс (e ≈ 0.5)
 x0 = 1;
@@ -179,7 +183,7 @@ y0 = 0;
 vx0 = 0;
 vy0 = 1.4 * sqrt(K / x0);  // На 40% больше круговой
 
-main(x0, y0, vx0, vy0, 200);
+main(x0, y0, vx0, vy0, 200, 'orbit_elliptic_moderate.png');
 
 // Параболическая орбита (e = 1)
 x0 = 1;
@@ -187,7 +191,7 @@ y0 = 0;
 vx0 = 0;
 vy0 = sqrt(2 * K / x0);  // Вторая космическая скорость
 
-main(x0, y0, vx0, vy0, 100);
+main(x0, y0, vx0, vy0, 100, 'orbit_parabolic.png');
 
 // Гиперболическая орбита (e > 1)
 x0 = 1;
@@ -195,7 +199,7 @@ y0 = 0;
 vx0 = 0;
 vy0 = 1.02 * sqrt(2 * K / x0);
 
-main(x0, y0, vx0, vy0, 50);
+main(x0, y0, vx0, vy0, 50, 'orbit_hyperbolic_close.png');
 
 // Гиперболическая орбита - дальний подлет
 x0 = 5;
@@ -203,4 +207,4 @@ y0 = -20;
 vx0 = 0;
 vy0 = 1.05 * sqrt(2 * K / x0);
 
-main(x0, y0, vx0, vy0, 50);
+main(x0, y0, vx0, vy0, 50, 'orbit_hyperbolic_distant.png');

@@ -33,7 +33,7 @@ function dYdt = ThreeBodyRHP(t, Y)
     dYdt = [dx1dt; dy1dt; dvx1dt; dvy1dt; dx2dt; dy2dt; dvx2dt; dvy2dt];
 endfunction
 
-function main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, tmax)
+function main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, tmax, filename)
     disp('=== Задача трех тел ===')
     disp('Масса звезды M = ' + string(M) + ' M☉')
     disp('Масса планеты 1 m1 = ' + string(m1) + ' M☉')
@@ -105,7 +105,7 @@ function main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, tmax)
 
     // Формируем строку с НУ
     ic_str = 'НУ: r1=(' + string(x1_0) + ',' + string(y1_0) + ') r2=(' + string(x2_0) + ',' + string(y2_0) + ')';
-    
+
     // Построение графиков
     fig = scf();
     fig.figure_name = ic_str;  // Заголовок окна с НУ
@@ -132,6 +132,10 @@ function main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, tmax)
     title('Момент импульса');
     xlabel('Время (годы)'); ylabel('Момент импульса L');
     xgrid;
+
+    // Сохранение графика
+    xs2png(gcf(), 'img/' + filename);
+    disp('График сохранен в файл ' + filename);
 endfunction
 
 disp(' ')
@@ -149,7 +153,7 @@ y2_0 = 0;
 vx2_0 = 0;
 vy2_0 = sqrt(K / x2_0);
 
-main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 100);
+main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 100, 'three_body_stable.png');
 
 disp('========================================')
 disp('Пример 2')
@@ -165,7 +169,7 @@ y2_0 = 0;
 vx2_0 = 0;
 vy2_0 = sqrt(K / x2_0);
 
-main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 20);
+main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 20, 'three_body_example2.png');
 
 disp(' ')
 disp('========================================')
@@ -182,7 +186,7 @@ y2_0 = 0;
 vx2_0 = 0;
 vy2_0 = sqrt(K / x2_0);
 
-main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 50);
+main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 50, 'three_body_interaction.png');
 
 disp(' ')
 disp('========================================')
@@ -199,7 +203,7 @@ y2_0 = 0;
 vx2_0 = 0;
 vy2_0 = sqrt(K / abs(x2_0));
 
-main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 50);
+main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 50, 'three_body_opposite.png');
 
 disp(' ')
 disp('========================================')
@@ -216,4 +220,4 @@ y2_0 = 0;
 vx2_0 = 0;
 vy2_0 = sqrt(K / abs(x2_0));
 
-main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 10);
+main(x1_0, y1_0, vx1_0, vy1_0, x2_0, y2_0, vx2_0, vy2_0, 10, 'three_body_collision.png');
